@@ -2,21 +2,39 @@
 using namespace std;
 
 /*
-This is new thing I have learned 
-Means how to pass the array in the function using ptr
-and modify the same array in the function without creating 
-any copy.
+Leaders in the array.
+IF all elements to the right of the elements are greater than it is leader
 */
-void reverseArray(int *p, int size){
-    int low = 0;
-    int high= size-1;
 
-    while(low<high){
-        int temp = *(p+low);
-        *(p+low) = *(p+high);
-        *(p+high) = temp;
-        low++;
-        high--;
+
+//Naive Solution TC(n**2)
+void leadersArray(int a[], int size){
+    for(int i=0; i<size; i++){
+        bool flag = false;
+        for(int j=i+1; j<size; j++)
+        {
+            if(a[i]<=a[j]){
+                flag = true;
+                break;
+            }
+        }
+        if(flag==false){
+            cout<<a[i]<<" ";
+        }
+    }
+}
+
+// solution2: Efficient TC(n)
+
+void effi_leaders(int a[], int size){
+    int current_leader = a[size-1];    // rightmost element is always leaders
+    cout<<current_leader<<" ";
+
+    for(int i=size-2; i>=0; i--){
+        if(current_leader<a[i]){
+            current_leader = a[i];
+            cout<<current_leader<<" ";
+        }
     }
 }
 
@@ -43,10 +61,8 @@ int main(){
         for(int i=0; i<size; ++i){
             cin>>a[i];
         }
-        printArray(a,size);
-        reverseArray(a, size);
-        cout<<"Array after reverse: ";
-        printArray(a,size);
+        // leadersArray(a,size);
+        effi_leaders(a, size);
     }
     
     return 0;

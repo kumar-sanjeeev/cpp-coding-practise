@@ -9,7 +9,6 @@ void print(int a[], int size)
     }
 }
 
-
 int largest_index(int a[], int size){
     int temp = a[0];
     int idx = 0;
