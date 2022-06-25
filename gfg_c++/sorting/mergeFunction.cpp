@@ -33,7 +33,7 @@ void mergeFunction(int a[], int low, int mid, int high)
     }
 
     // create the two pointer
-    int p1 = 0, p2 = 0, k = 0;
+    int p1 = 0, p2 = 0, k = low;
 
     while (p1 < left_size && p2 < right_size)
     {
